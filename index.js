@@ -1,7 +1,11 @@
-require('./.env').config()
-const express = require('express')
+import dotenv from "dotenv"
+dotenv.config({
+    path: ".env"
+})
+import express from "express"
+
 const app = express()
-const port = 4000
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -15,6 +19,6 @@ app.get('/login',(req,res)=>{
     res.send('<h1>hello</h1>')
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
